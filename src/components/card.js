@@ -8,7 +8,7 @@ class ThankYouCard extends Component {
         super()
 
         this.state = {
-            nameOfRecipient: 'Orange',
+            nameOfRecipient: '',
             item: ''
 
             
@@ -18,7 +18,8 @@ class ThankYouCard extends Component {
 
     handleInputChange(event) {
 
-        this.setState({ nameOfRecipient: event.target.value})
+        this.setState({ [event.target.name]: event.target.value})
+        console.log(this.state)
     }
 
     render() {
@@ -26,16 +27,8 @@ class ThankYouCard extends Component {
         return (
             <div className="thank_you_card">
                 <h1>{this.state.nameOfRecipient}</h1>
-                <input onChange={(event) => this.handleInputChange(event)}/>
-            </div>
-
-        )
-
-        return (
-            <div className="thank_you_card">
-                <h1>{this.state.nameOfRecipient}</h1>
-                { Input('Name of Recipient') }
-                { Input('Item') }
+                { Input('Name of Recipient', this.state.NameOfRecipient, this.handleInputChange, 'nameOfRecipient') }
+                { Input('Item', this.state.item, this.handleInputChange, 'item') }
                 { Input('Positive Emotion') }
                 { Input('Positive Adjective') }
                 { Input('Positive Adjective') }
