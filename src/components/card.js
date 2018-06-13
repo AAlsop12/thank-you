@@ -13,10 +13,12 @@ class ThankYouCard extends Component {
 
             
         }
+        this.handleInputChange = this.handleInputChange.bind(this);
     }
 
-    handleInputChange() {
-        this.setState({ nameOfRecipient: 'Leslie'})
+    handleInputChange(event) {
+
+        this.setState({ nameOfRecipient: event.target.value})
     }
 
     render() {
@@ -24,7 +26,7 @@ class ThankYouCard extends Component {
         return (
             <div className="thank_you_card">
                 <h1>{this.state.nameOfRecipient}</h1>
-                <input/>
+                <input onChange={(event) => this.handleInputChange(event)}/>
             </div>
 
         )
