@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 
 
-const InputTwo = (choice) => {
+const Input = ({word, state, name}, onChange) => {
     return (
-        <div className="input_two">
-            <input />   
-            <label>{choice}</label>    
+        <div key={name} className="input">
+            <input name={name} value={state} onChange={onChange}/>   
+            <label>{word}</label>    
         </div>
     )
 }
 
 
-export default InputTwo;
+
+export default Input;

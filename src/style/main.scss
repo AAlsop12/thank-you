@@ -1,19 +1,23 @@
 @mixin card {
-    height: 736px;
-    width: 50vw;
+    height: 200px;
+    width: 400px;
+
     box-shadow: 0 4px 30px 0 rgba(0, 0, 0, .1 );
     border-radius: 7px;
+    padding: 20px;
+
 
 }
 
 .thank_you_card {
     @include card;
     background-color: white;
-    
+
 }
 
 .thinking_of_you_card {
     @include card;
+    background-color: lightpink;
 }
 
 .home {

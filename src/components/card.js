@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import Input from './input';
+import Content from './content';
 
 class ThankYouCard extends Component {
 
@@ -9,7 +10,11 @@ class ThankYouCard extends Component {
 
         this.state = {
             nameOfRecipient: '',
-            item: ''
+            item: '',
+            positiveEmotion: '',
+            positiveAdjOne: '',
+            positiveAdjTwo: '',
+            nameOfAuthor: ''
 
             
         }
@@ -24,15 +29,22 @@ class ThankYouCard extends Component {
 
     render() {
 
+        const inputData = [
+                {word: 'Name of Recipient', state: this.state.nameOfRecipient, name: 'nameOfRecipient'},
+                {word: 'Item', state: this.state.item, name: 'item'},
+                {word: 'Positive Emotion', state: this.state.positiveEmotion, name: 'positiveEmotion'},
+                {word: 'Positive Adjective', state: this.state.positiveAdjOne, name: 'positiveAdjOne'},
+                {word: 'Positive Adjective', state: this.state.positiveAdjTwo, name: 'positiveAdjTwo'},
+                {word: 'Name of Author', state: this.state.nameOfAuthor, name: 'nameOfAuthor'}
+        ]
+
+
         return (
             <div className="thank_you_card">
-                <h1>{this.state.nameOfRecipient}</h1>
-                { Input('Name of Recipient', this.state.NameOfRecipient, this.handleInputChange, 'nameOfRecipient') }
-                { Input('Item', this.state.item, this.handleInputChange, 'item') }
-                { Input('Positive Emotion') }
-                { Input('Positive Adjective') }
-                { Input('Positive Adjective') }
-                { Input('Name of Author') }
+                    {
+                        inputData.map(data => Input ( (data), this.handleInputChange))
+                    }
+                    <Content data={this.state}/>
             </div>
         )
     }
