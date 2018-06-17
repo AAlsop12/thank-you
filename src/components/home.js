@@ -9,8 +9,8 @@ class Home extends Component {
     return (
       <div className ="home">
         { Header () }
-        { HeaderTwo () }
         <ThankYouCard />
+        { HeaderTwo () }
         <ThinkingOfYouCard />
       </div>
     );

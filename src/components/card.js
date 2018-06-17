@@ -14,17 +14,36 @@ class ThankYouCard extends Component {
             positiveEmotion: '',
             positiveAdjOne: '',
             positiveAdjTwo: '',
-            nameOfAuthor: ''
-
-            
+            nameOfAuthor: '',
+            contentVisible: false 
         }
         this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleFormSubmit = this.handleFormSubmit.bind(this);
     }
 
     handleInputChange(event) {
 
         this.setState({ [event.target.name]: event.target.value})
         console.log(this.state)
+    }
+
+    handleFormSubmit(event) {
+        event.preventDefault()
+
+        if(this.state.contentVisible) {
+            this.setState({
+                nameOfRecipient: '',
+                item: '',
+                positiveEmotion: '',
+                positiveAdjOne: '',
+                positiveAdjTwo: '',
+                nameOfAuthor: '',
+                contentVisible: false
+            })
+        } else {
+            this.setState({contentVisible: true})
+        }
+
     }
 
     render() {
@@ -40,12 +59,17 @@ class ThankYouCard extends Component {
 
 
         return (
-            <div className="thank_you_card">
+            <form onSubmit={this.handleFormSubmit} className="thank_you_card">
+                <div className="card__inputs">
                     {
                         inputData.map(data => Input ( (data), this.handleInputChange))
                     }
-                    <Content data={this.state}/>
-            </div>
+                </div>
+                <button type="submit">{!this.state.contentVisible ? 'Generate Thank You Card' : 'Clear Form'}</button>
+                {
+                    this.state.contentVisible ? <Content data={this.state}/> : ''
+                }
+            </form>
         )
     }
 }
